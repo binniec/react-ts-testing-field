@@ -2,22 +2,7 @@
   text-align: center;
 }
 
-.title-bar {
-  display: flex;
-  justify-content: flex-end;
-  background-color: #414141;
-  box-shadow: 0px 5px 10px;
-  padding: 0 1em;
-}
-
-.title-bar-btn {
-  background: transparent;
-  color: silver;
-  border: none;
-  padding: 1em;
-  font-size: 1em;
-}
-
-.title-bar-btn:hover {
-  color: whitesmoke;
+.page-container {
+  margin: 3em auto;
+  width: 60em;
 }

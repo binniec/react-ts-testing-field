@@ -6,32 +6,22 @@
 }
 
 .home-header {
-    animation: fadeIn 2s;
+    animation: fadeIn 1s;
     color: #42ccff;
-    font-weight: 800;
-    font-size: 3em;
-    font-family: Inter;
 }
 
 .home-sub-header {
-    animation: fadeIn 1.5s;
-    animation-delay: 2s;
+    animation: fadeIn 1s;
+    animation-delay: 0.5s;
     animation-direction: linear;
     animation-fill-mode: backwards;
     color: silver;
-    font-weight: 800;
     font-size: 2em;
-    font-family: Inter;
 }
 
 .home-header, .home-sub-header {
     margin: 0;
-}
-
-.home-header-container {
-    margin: 3em auto;
     text-align: start;
-    width: 60em;
 }
 
 @keyframes fadeIn {

@@ -1,26 +1,24 @@
 import React, { Component } from 'react';
 import HomePage from '../pages/home/home';
+import AboutPage from '../pages/about/about';
+import ProductsPage from '../pages/products/products';
+import FAQPage from '../pages/faq/faq';
 import { Routes, Route } from "react-router-dom";
-import { Link } from "react-router-dom";
+import TitleBar from '../components/title-bar/title-bar';
 
 class Main extends Component {
 
     render() {
         return (
             <div>
-                <div className="title-bar">
-                    <button className="title-bar-btn">Home</button>
-                    <Link to="/about">
-                        <button className="title-bar-btn">About</button>
-                    </Link>
-                    <button className="title-bar-btn">Products</button>
-                    <button className="title-bar-btn">FAQ</button>
-                    <input type="checkbox"/>
-                </div>
-
+                <TitleBar/>
+                
                 <Routes>
                     <Route path="*" element={<HomePage />} />
-                    <Route path="/about" element={<HomePage />} />
+                    <Route path="/about" element={<AboutPage />} />
+                    <Route path="/products" element={<ProductsPage />} />
+                    <Route path="/faq" element={<FAQPage />} />
+                    
                 </Routes>
             </div>
         );
