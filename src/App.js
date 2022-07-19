@@ -1,5 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
+import { Routes, Route } from "react-router-dom";
 import Main from './components/main';
 
 function App() {
@@ -8,10 +9,9 @@ function App() {
 // root.render(element);
   return (
     <div className="App">
-      <header className="App-header">
-        {/* <img src={logo} className="App-logo" alt="logo" /> */}
-        <Main/>
-      </header>
+      <Routes>
+        <Route path="/" element={<Main />} />
+      </Routes>
     </div>
   );
 }
