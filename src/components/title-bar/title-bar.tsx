@@ -21,6 +21,10 @@ class TitleBar extends React.Component {
                     <button className="title-bar-btn">FAQ</button>
                 </Link>
 
+                <Link to="/fts">
+                    <button className="title-bar-btn">FTS</button>
+                </Link>
+
             </div>
 
         );

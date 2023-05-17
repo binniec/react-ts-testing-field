@@ -1,0 +1,154 @@
+.fts-container {
+    margin: 3em auto;
+    width: 95%;
+    max-width: 90em;
+    height: 40em;
+    display: flex;
+}
+
+.fts-table-container {
+    flex: 1;
+    height: 100%;
+}
+
+.fts-table-header, .fts-table-item {
+    display: flex;
+
+    label {
+        background: #63c1ff5b;
+    }
+
+    input, label {
+        text-align: left;
+        font-size: 18px;
+        padding: 10px;
+        // outline: 1px solid silver;
+        color: silver;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+
+    [data-name='booth'] {
+        width: 10%;
+    }
+    
+    [data-name='inventoryCode'] {
+        width: 13%;
+    }
+    
+    [data-name='description'] {
+        width: 55%;
+    }
+    
+    [data-name='quantity'] {
+        width: 7%;
+    }
+    
+    [data-name='price'] {
+        width: 11%;
+    }
+    
+    [data-name='discount'] {
+        width: 5%;
+    }
+    
+    [data-name='total'] {
+        width: 11%;
+    }
+}
+
+.fts-table-item {
+    input {
+        background: transparent;
+        border: none;
+    }
+
+    input:hover {
+        background:#c0c0c02f;
+    }
+
+    input:focus {
+        // background: transparent;
+        outline: none;
+        background:#0000004b;
+    }
+
+}
+
+.fts-side-panel-container {
+    width: 20%;
+    height: 100%;
+
+    div {
+        display: flex;
+    }
+    
+    input, label {
+        color: silver;
+        font-size: 18px;
+    }
+
+    input {
+        background: transparent;
+        outline: none;
+        border: 1px solid silver;
+        width: 25%;
+    }
+
+    label {
+        padding: 10px;
+        text-align: end;
+        width: 50% !important;
+    }
+}
+
+.fts-outline {
+    outline: 1px solid silver;
+}
+
+.fts-button {
+    background: transparent;
+    color: silver;
+    border: none;
+    padding: 10px 1em;
+    font-size: 1em;
+    transition: 0.2s;
+    width: 100%;
+}
+
+.fts-label {
+    color: silver;
+}
+
+.fts-button:hover, .fts-button:focus {
+    transition: 0.2s;
+    background: silver;
+    color: black;
+    outline: none;
+}
+
+.fts-button:active {
+    transition: 0.2s;
+    background: transparent !important;
+    color: silver;
+}
+
+.fts-table-button {
+    padding: 5px 10px;
+    margin: 10px;
+    float: left;
+
+    button {
+        background: transparent;
+        color: silver;
+        border: none;
+        transition: 0.2s;
+        margin-right: 5px;
+        font-size: 18px;
+        padding: 0;
+    }
+}
+
+.fts-table-button:hover {
+    outline: 1px solid silver;
+}

@@ -5,6 +5,7 @@ import ProductsPage from '../pages/products/products';
 import FAQPage from '../pages/faq/faq';
 import { Routes, Route } from "react-router-dom";
 import TitleBar from './title-bar/title-bar';
+import FTSPage from '../pages/fts/fts';
 
 class Main extends Component {
 
@@ -18,7 +19,7 @@ class Main extends Component {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/products" element={<ProductsPage />} />
                     <Route path="/faq" element={<FAQPage />} />
-                    
+                    <Route path="/fts" element={<FTSPage />}/>
                 </Routes>
             </div>
         );
