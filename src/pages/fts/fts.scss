@@ -1,7 +1,17 @@
+label, button, input, select {
+    font-size: 18px;
+    color: silver;
+}
+
+input::placeholder {
+    color: silver;
+    opacity: 0.7;
+}
+
 .fts-container {
     margin: 3em auto;
     width: 95%;
-    max-width: 90em;
+    max-width: 75em;
     height: 40em;
     display: flex;
 }
@@ -9,21 +19,47 @@
 .fts-table-container {
     flex: 1;
     height: 100%;
+
+    > div:not(:first-child) {
+        overflow-y: scroll;
+    }
+
+    ::-webkit-scrollbar {
+        width: 10px;
+      }
+      
+      /* Track */
+      ::-webkit-scrollbar-track {
+        background: transparent;
+        border-left: 1px solid silver;
+        border-bottom: 1px solid silver;
+      }
+      
+      /* Handle */
+      ::-webkit-scrollbar-thumb {
+        border: 1px solid silver;
+        transition: 0.2s;
+      }
+      
+      /* Handle on hover */
+      ::-webkit-scrollbar-thumb:hover {
+        background: silver;
+        transition: 0.2s;
+      }
+}
+
+.fts-table-header {
+    scrollbar-gutter: stable;
+    overflow-y: auto;
+    background: #63c1ff5b;
 }
 
 .fts-table-header, .fts-table-item {
     display: flex;
 
-    label {
-        background: #63c1ff5b;
-    }
-
     input, label {
         text-align: left;
-        font-size: 18px;
         padding: 10px;
-        // outline: 1px solid silver;
-        color: silver;
         overflow: hidden;
         text-overflow: ellipsis;
     }
@@ -45,7 +81,7 @@
     }
     
     [data-name='price'] {
-        width: 11%;
+        width: 12%;
     }
     
     [data-name='discount'] {
@@ -53,15 +89,18 @@
     }
     
     [data-name='total'] {
-        width: 11%;
+        width: 10%;
     }
 
     input[data-name='total'] {
         background: transparent !important;
+        pointer-events: none;
     }
 }
 
 .fts-table-item {
+    border-bottom: 1px solid silver;
+
     input {
         background: transparent;
         border: none;
@@ -72,7 +111,6 @@
     }
 
     input:focus {
-        // background: transparent;
         outline: none;
         background:#0000004b;
     }
@@ -80,16 +118,11 @@
 }
 
 .fts-side-panel-container {
-    width: 20%;
+    width: 25%;
     height: 100%;
 
     div {
         display: flex;
-    }
-    
-    input, label {
-        color: silver;
-        font-size: 18px;
     }
 
     input {
@@ -99,10 +132,18 @@
         width: 25%;
     }
 
-    label {
+    label:first-child {
+        width: 65%;
+    }
+
+    span > input {
+        text-align: center;
+    }
+
+    label, span {
         padding: 10px;
         text-align: end;
-        width: 50% !important;
+        width: 35%;
     }
 }
 
@@ -112,19 +153,13 @@
 
 .fts-button {
     background: transparent;
-    color: silver;
     border: none;
     padding: 10px 1em;
-    font-size: 1em;
     transition: 0.2s;
     width: 100%;
 }
 
-.fts-label {
-    color: silver;
-}
-
-.fts-button:hover, .fts-button:focus {
+.fts-button:hover {
     transition: 0.2s;
     background: silver;
     color: black;
@@ -134,7 +169,6 @@
 .fts-button:active {
     transition: 0.2s;
     background: transparent !important;
-    color: silver;
 }
 
 .fts-table-button {
@@ -144,15 +178,25 @@
 
     button {
         background: transparent;
-        color: silver;
         border: none;
         transition: 0.2s;
         margin-right: 5px;
-        font-size: 18px;
         padding: 0;
     }
 }
 
 .fts-table-button:hover {
     outline: 1px solid silver;
+}
+
+.fts-select {
+    select {
+        border: 1px solid silver;
+        background: transparent;
+        outline: none;
+
+        option {
+            background: #4e4e4e;
+        }
+    }
 }
