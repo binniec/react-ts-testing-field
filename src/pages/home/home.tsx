@@ -6,7 +6,7 @@ class HomePage extends React.Component {
         return (
             <div className='page-container'>
                 <h1 className='home-header'>React Test Field</h1>
-                <h1 className='home-sub-header'>A place to test shit.</h1>
+                <h1 className='home-sub-header'>A place to test stuff.</h1>
                 
                 <div></div>
             </div>

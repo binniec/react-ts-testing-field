@@ -55,6 +55,10 @@
     [data-name='total'] {
         width: 11%;
     }
+
+    input[data-name='total'] {
+        background: transparent !important;
+    }
 }
 
 .fts-table-item {

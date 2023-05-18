@@ -1,15 +1,6 @@
-# 🚀 Welcome to your new awesome project!
+# React Typescript Testing App
 
-This project has been created using **webpack-cli**, you can now run
-
-```
-npm run build
-```
-
-or
-
-```
-yarn build
-```
-
-to bundle your application
+- Created with CRA
+- Added Router
+- Converted to Typescript
+- Added webpack
