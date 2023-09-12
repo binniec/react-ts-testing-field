@@ -24,7 +24,7 @@ class FTSPage extends React.Component {
                     <input data-name="description" defaultValue={item.description} />
                     <input type='number' data-name="quantity" defaultValue={item.quantity} />
                     <input type='number' step='0.05' data-name="price" defaultValue={item.price.toFixed(2)} />
-                    <input type='number' min="0" max="100" data-name='discount' defaultValue={item.discount} />
+                    <input type='number' placeholder='0' data-name='discount' defaultValue={item.discount} />
                     <input tabIndex={-1} readOnly data-name='total'  defaultValue={(item.price - (item.price * item.discount) * item.quantity).toFixed(2)}/>
                 </div>);
         }
@@ -82,7 +82,7 @@ class FTSPage extends React.Component {
                         <div>
                             <label>Discount:</label>
                             <span>
-                                <input placeholder='0' maxLength={2} defaultValue={0}/>
+                                <input placeholder='0' maxLength={2}/>
                             </span>
                         </div>
 

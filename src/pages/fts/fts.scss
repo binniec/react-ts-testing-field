@@ -69,19 +69,19 @@ input::placeholder {
     }
     
     [data-name='inventoryCode'] {
-        width: 13%;
+        width: 10%;
     }
     
     [data-name='description'] {
-        width: 55%;
+        width: 50%;
     }
     
     [data-name='quantity'] {
-        width: 7%;
+        width: 5%;
     }
     
     [data-name='price'] {
-        width: 12%;
+        width: 10%;
     }
     
     [data-name='discount'] {
@@ -168,6 +168,7 @@ input::placeholder {
 
 .fts-button:active {
     transition: 0.2s;
+    color: silver;
     background: transparent !important;
 }
 
