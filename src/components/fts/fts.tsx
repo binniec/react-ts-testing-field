@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ChangeEvent } from 'react';
 import './fts.scss';
 
 export default function FTSPage() {
@@ -12,12 +12,65 @@ export default function FTSPage() {
         ]
     );
 
+    function itemList() {
+
+        return list.map((item, index) =>
+            <div className='fts-table-item' key={index}>
+                <input type='number' data-name="booth" value={item.booth} onChange={e => { updateItemBooth(index, e) }} />
+                <input data-name="inventoryCode" value={item.inventoryCode} /*onChange={e => { updateItemInventory(index, e) }}*/ />
+                <input data-name="description" value={item.description} /*onChange={e => { updateItemDesc(index, e) }}*/ />
+                <input type='number' data-name="quantity" value={item.quantity} onChange={e => { updateItemQuantity(index, e) }} />
+                <input type='number' step='0.05' data-name="price" value={item.price.toFixed(2)} /*onChange={e => { updateItemPrice(index, e) }}*/ />
+                <input type='number' placeholder='0' data-name='discount' value={item.discount} /*onChange={e => { updateItemDiscount(index, e) }}*/ />
+                <input tabIndex={-1} readOnly data-name='total' value={(item.price - (item.price * item.discount) * item.quantity).toFixed(2)} />
+            </div>
+        )
+    }
+
+    function updateItemBooth(itemIndex: number, event: ChangeEvent): void {
+
+        const element = event.target as HTMLInputElement;
+
+        setList(list.map((item, index) => {
+
+            if (index === itemIndex) {
+                return { ...item, booth: element.value };
+            } else {
+                return item;
+            }
+        }));
+    }
+
+    // function updateItemInventory(itemIndex: number, event: ChangeEvent): void { }
+
+    // function updateItemDesc(itemIndex: number, event: ChangeEvent): void { }
+
+    function updateItemQuantity(itemIndex: number, event: ChangeEvent): void {
+
+        const element = event.target as HTMLInputElement;
+
+        setList(list.map((item, index) => {
+
+            if (index === itemIndex ) {
+                return { ...item, quantity: Math.floor(element.valueAsNumber) };
+            } else if (element.valueAsNumber < 0) {
+                return { ...item, quantity: 1 };
+            } else {
+                return item;
+            }
+        }));
+    }
+
+    // function updateItemPrice(itemIndex: number, event: ChangeEvent): void { }
+
+    // function updateItemDiscount(itemIndex: number, event: ChangeEvent): void { }
+
     function getSubtotal(): number {
         let subtotal = 0;
 
-        for (const item of list) {
+        list.map( item => {
             subtotal += item.price;
-        }
+        });
 
         return subtotal;
     }
@@ -25,12 +78,19 @@ export default function FTSPage() {
     function getSalesTax(): number {
         let subtotal = 0;
 
-        for (const item of list) {
+        list.map( item => {
             subtotal += item.price;
-        }
+        });
 
         return subtotal * 0.13;
     }
+
+    function addItem() {
+        setList([...list,
+        { booth: "", inventoryCode: "", description: "", quantity: 1, price: 0, discount: 0 }
+        ]);
+    }
+
 
     return (
         <div className="fts-outline fts-container">
@@ -48,29 +108,11 @@ export default function FTSPage() {
 
                 <div>
 
-                    { list.map(item =>
-
-                        <div className='fts-table-item' key={item.booth}>
-                            <input type='number' data-name="booth" defaultValue={item.booth} />
-                            <input data-name="inventoryCode" defaultValue={item.inventoryCode} />
-                            <input data-name="description" defaultValue={item.description} />
-                            <input type='number' data-name="quantity" defaultValue={item.quantity} />
-                            <input type='number' step='0.05' data-name="price" defaultValue={item.price.toFixed(2)} />
-                            <input type='number' placeholder='0' data-name='discount' defaultValue={item.discount} />
-                            <input tabIndex={-1} readOnly data-name='total' defaultValue={(item.price - (item.price * item.discount) * item.quantity).toFixed(2)} />
-                        </div>
-                    )}
+                    { itemList( ) }
 
                 </div>
 
-                <button onClick={() => {
-                    setList([
-                        ...list,
-                        { booth: "", inventoryCode: "", description: "", quantity: 1, price: 0, discount: 0 }
-                    ]);
-                }
-                    
-                } className='fts-button'>+ New</button>
+                <button onClick={() => { addItem() }} className='fts-button'>+ New</button>
 
             </div>
             <div className='fts-side-panel-container'>
