@@ -1,16 +1,25 @@
-import { useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+
+
+
+  function myButton() {
+
+    return (
+      <button>
+        I'm a Button
+      </button>
+    )
+
+  }
 
   return (
     <>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-      </div>
+      {myButton()}
+
+      <h1>About</h1>
+      <p className='paragraph'>Hello there.<br/>How do you do?</p>
     </>
   )
 }
