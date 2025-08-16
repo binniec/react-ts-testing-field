@@ -165,7 +165,7 @@ function addItem() {
     return (
         <>
             <Header />
-            <section className="fts-outline fts-container">
+            <main className="fts-outline fts-container">
 
                     <div className='fts-outline fts-table-container'>
                         <div className='fts-outline fts-table-header'>
@@ -210,7 +210,7 @@ function addItem() {
 
                         <button className='fts-button'>Complete Transaction</button>
                     </div>
-            </section>
+            </main>
         </>
 
     )

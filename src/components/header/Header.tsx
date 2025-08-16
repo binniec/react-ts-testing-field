@@ -6,8 +6,8 @@ function Header() {
         <a href='/'>react-testing</a>
         <span></span>
         <a href='transactions'>Transactions</a>
-        <a href='transactions'>Test 2</a>
-        <a href='transactions'>Test 3</a>
+        {/* <a href='transactions'>Test 2</a>
+        <a href='transactions'>Test 3</a> */}
     </header>
 
     )

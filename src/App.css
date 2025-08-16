@@ -1,0 +1,7 @@
+.app-container {
+  margin: 3em auto;
+  width: 95%;
+  max-width: 80em;
+  height: 40em;
+  display: flex;
+}

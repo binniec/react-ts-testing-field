@@ -5,8 +5,8 @@ function App() {
   return (
   <>
     <Header />
-    <section>
-      Hello
+    <section className='app-container'>
+      hello
     </section>
   </>
   )
