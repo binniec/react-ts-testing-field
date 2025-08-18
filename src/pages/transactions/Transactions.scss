@@ -22,6 +22,7 @@ input::placeholder {
 
     > div:not(:first-child) {
         overflow-y: scroll;
+        max-height: calc(100% - 87px);
     }
 
     ::-webkit-scrollbar {
@@ -39,6 +40,7 @@ input::placeholder {
       ::-webkit-scrollbar-thumb {
         border: 1px solid silver;
         transition: 0.2s;
+        background: silver;
       }
       
       /* Handle on hover */
@@ -155,21 +157,19 @@ input::placeholder {
     background: transparent;
     border: none;
     padding: 10px 1em;
-    transition: 0.2s;
+    transition: 0.1s;
     width: 100%;
-}
 
-.fts-button:hover {
-    transition: 0.2s;
-    background: silver;
-    color: black;
-    outline: none;
-}
+    &:hover, &:focus {
+        background: silver;
+        color: black;
+        outline: none;
+    }
 
-.fts-button:active {
-    transition: 0.2s;
-    color: silver;
-    background: transparent !important;
+    &:active {
+        background: transparent;
+        color: silver;
+    }
 }
 
 .fts-table-button {

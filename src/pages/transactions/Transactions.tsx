@@ -28,13 +28,62 @@ function itemList() {
 
     return list.map((item, index) =>
         <div className='fts-table-item' key={index}>
-            <input type='number' data-name="booth" value={item.booth} onChange={e => { updateItemBooth(index, e) }} />
-            <input data-name="inventoryCode" value={item.inventoryCode} onChange={e => { updateItemInventory(index, e) }} />
-            <input data-name="description" value={item.description} onChange={e => { updateItemDesc(index, e) }} />
-            <input type='number' step='1' placeholder='1' data-name="quantity" value={item.quantity} onChange={e => { updateItemQuantity(index, e) }} />
-            <input type='number' step='0.05' data-name="price" value={item.price.toFixed(2)} onChange={e => { updateItemPrice(index, e) }} />
-            <input type='number' step='1' placeholder='0' data-name='discount' value={item.discount} onChange={e => { updateItemDiscount(index, e) }} />
-            <input tabIndex={-1} readOnly data-name='total' value={processItemTotal(item)} />
+
+            {/* Booth Number */}
+            <input 
+                type='number'
+                placeholder='Booth'
+                data-name="booth"
+                value={item.booth}
+                onChange={e => { updateItemBooth(index, e) }} />
+
+            {/* Inventory Code */}
+            <input 
+                data-name="inventoryCode"
+                placeholder='Inv.'
+                value={item.inventoryCode}
+                onChange={e => { updateItemInventory(index, e) }} />
+
+            {/* Description */}
+            <input 
+                data-name="description"
+                placeholder='Description'
+                value={item.description}
+                onChange={e => { updateItemDesc(index, e) }} />
+
+            {/* Quantity */}
+            <input 
+                type='number'
+                step='1'
+                placeholder='1'
+                data-name="quantity"
+                value={item.quantity}
+                onChange={e => { updateItemQuantity(index, e) }} />
+
+            {/* Price */}
+            <input 
+                type='number'
+                step='0.05'
+                data-name="price"
+                defaultValue={item.price.toFixed(2)}
+                onChange={e => { updateItemPrice(index, e) }}
+                onBlur={e => e.target.value = e.target.valueAsNumber.toFixed(2)}/>
+
+            {/* Discount */}
+            <input 
+                type='number'
+                step='1'
+                placeholder='0'
+                data-name='discount'
+                maxLength={2} value={item.discount}
+                onChange={e => { updateItemDiscount(index, e) }} />
+
+            {/* Total */}
+            <input 
+                tabIndex={-1}
+                readOnly
+                data-name='total'
+                value={processItemTotal(item)} />
         </div>
     )
 }
@@ -156,10 +205,19 @@ function getSalesTax(): number {
     return subtotal * 0.13;
 }
 
-function addItem() {
+async function addItem() {
     setList([...list,
     { booth: "", inventoryCode: "", description: "", quantity: 1, price: 0, discount: 0 }
     ]);
+
+    const element = document.getElementById('fts-list')!;
+
+    // Move focus to new item, booth input
+    setTimeout(() => {
+        // ((element.lastElementChild as HTMLElement).firstElementChild as HTMLElement).focus();
+
+        (element.children[list.length].firstElementChild as HTMLElement).focus()
+    });
 }
 
     return (
@@ -178,7 +236,7 @@ function addItem() {
                             <label data-name='total'>Total</label>
                         </div>
 
-                        <div>
+                        <div id='fts-list'>
 
                             {itemList()}
 
@@ -191,7 +249,7 @@ function addItem() {
                         <div>
                             <label>Discount:</label>
                             <span>
-                                <input placeholder='0' maxLength={2} />
+                                <input placeholder='0' step='1' maxLength={2} />
                             </span>
                         </div>
 
