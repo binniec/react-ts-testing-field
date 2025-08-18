@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react";
 import Header from "../../components/header/Header";
-import "./transactions.css";
+import "./Transactions.scss";
 import React from "react";
 
 interface TransactionItem {
@@ -31,9 +31,9 @@ function itemList() {
             <input type='number' data-name="booth" value={item.booth} onChange={e => { updateItemBooth(index, e) }} />
             <input data-name="inventoryCode" value={item.inventoryCode} onChange={e => { updateItemInventory(index, e) }} />
             <input data-name="description" value={item.description} onChange={e => { updateItemDesc(index, e) }} />
-            <input type='number' data-name="quantity" value={item.quantity} onChange={e => { updateItemQuantity(index, e) }} />
+            <input type='number' step='1' placeholder='1' data-name="quantity" value={item.quantity} onChange={e => { updateItemQuantity(index, e) }} />
             <input type='number' step='0.05' data-name="price" value={item.price.toFixed(2)} onChange={e => { updateItemPrice(index, e) }} />
-            <input type='number' placeholder='0' data-name='discount' value={item.discount} onChange={e => { updateItemDiscount(index, e) }} />
+            <input type='number' step='1' placeholder='0' data-name='discount' value={item.discount} onChange={e => { updateItemDiscount(index, e) }} />
             <input tabIndex={-1} readOnly data-name='total' value={processItemTotal(item)} />
         </div>
     )
@@ -42,7 +42,7 @@ function itemList() {
 
 function processItemTotal(item: TransactionItem) {
 
-    return (item.price - (item.price * (item.discount ? item.discount : 0) / 100) * item.quantity).toFixed(2)
+    return ((item.price - (item.price * (item.discount ? item.discount : 0) / 100)) * item.quantity).toFixed(2)
 
 }
 
@@ -108,10 +108,10 @@ function updateItemDiscount(itemIndex: number, event: ChangeEvent): void {
 
     setList(list.map((item, index) => {
 
-        if (index === itemIndex) {
+        if (index === itemIndex ) {
             return { ...item, discount: element.valueAsNumber };
         } else if (element.valueAsNumber < 0) {
-            return { ...item, quantity: 1 };
+            return { ...item, discount: 1 };
         } else {
             return item;
         }
@@ -125,7 +125,7 @@ function updateItemQuantity(itemIndex: number, event: ChangeEvent): void {
 
     setList(list.map((item, index) => {
 
-        if (index === itemIndex) {
+        if (index === itemIndex && element.valueAsNumber > 0) {
             return { ...item, quantity: Math.floor(element.valueAsNumber) };
         } else if (element.valueAsNumber < 0) {
             return { ...item, quantity: 1 };
@@ -140,7 +140,7 @@ function getSubtotal(): number {
     let subtotal = 0;
 
     list.map( item => {
-        subtotal += item.price;
+        subtotal += ((item.price - (item.price * (item.discount ? item.discount : 0) / 100)) * item.quantity)
     });
 
     return subtotal;
@@ -150,7 +150,7 @@ function getSalesTax(): number {
     let subtotal = 0;
 
     list.map( item => {
-        subtotal += item.price;
+        subtotal += ((item.price - (item.price * (item.discount ? item.discount : 0) / 100)) * item.quantity);
     });
 
     return subtotal * 0.13;
