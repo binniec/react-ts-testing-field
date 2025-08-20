@@ -1,4 +1,7 @@
-label, button, input, select {
+label,
+button,
+input,
+select {
     font-size: 18px;
     color: silver;
 }
@@ -20,34 +23,34 @@ input::placeholder {
     flex: 1;
     height: 100%;
 
-    > div:not(:first-child) {
+    >div:not(:first-child) {
         overflow-y: scroll;
         max-height: calc(100% - 87px);
     }
 
     ::-webkit-scrollbar {
         width: 10px;
-      }
-      
-      /* Track */
-      ::-webkit-scrollbar-track {
+    }
+
+    /* Track */
+    ::-webkit-scrollbar-track {
         background: transparent;
         border-left: 1px solid silver;
         border-bottom: 1px solid silver;
-      }
-      
-      /* Handle */
-      ::-webkit-scrollbar-thumb {
+    }
+
+    /* Handle */
+    ::-webkit-scrollbar-thumb {
         border: 1px solid silver;
         transition: 0.2s;
         background: silver;
-      }
-      
-      /* Handle on hover */
-      ::-webkit-scrollbar-thumb:hover {
+    }
+
+    /* Handle on hover */
+    ::-webkit-scrollbar-thumb:hover {
         background: silver;
         transition: 0.2s;
-      }
+    }
 }
 
 .fts-table-header {
@@ -56,10 +59,12 @@ input::placeholder {
     background: #63c1ff5b;
 }
 
-.fts-table-header, .fts-table-item {
+.fts-table-header,
+.fts-table-item {
     display: flex;
 
-    input, label {
+    input,
+    label {
         text-align: left;
         padding: 10px;
         overflow: hidden;
@@ -69,27 +74,27 @@ input::placeholder {
     [data-name='booth'] {
         width: 10%;
     }
-    
+
     [data-name='inventoryCode'] {
         width: 10%;
     }
-    
+
     [data-name='description'] {
         width: 50%;
     }
-    
+
     [data-name='quantity'] {
         width: 5%;
     }
-    
+
     [data-name='price'] {
         width: 10%;
     }
-    
+
     [data-name='discount'] {
         width: 5%;
     }
-    
+
     [data-name='total'] {
         width: 10%;
     }
@@ -109,12 +114,12 @@ input::placeholder {
     }
 
     input:hover {
-        background:#c0c0c02f;
+        background: #c0c0c02f;
     }
 
     input:focus {
         outline: none;
-        background:#0000004b;
+        background: #0000004b;
     }
 
 }
@@ -132,17 +137,29 @@ input::placeholder {
         outline: none;
         border: 1px solid silver;
         width: 25%;
+
+    }
+
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    input[type=number] {
+        -moz-appearance: textfield;
     }
 
     label:first-child {
         width: 65%;
     }
 
-    span > input {
+    span>input {
         text-align: center;
     }
 
-    label, span {
+    label,
+    span {
         padding: 10px;
         text-align: end;
         width: 35%;
@@ -155,12 +172,15 @@ input::placeholder {
 
 .fts-button {
     background: transparent;
+    background-image: radial-gradient(#565656 1px, transparent 0);
+    background-size: 3px 4px;
     border: none;
     padding: 10px 1em;
     transition: 0.1s;
     width: 100%;
 
-    &:hover, &:focus {
+    &:hover,
+    &:focus {
         background: silver;
         color: black;
         outline: none;
