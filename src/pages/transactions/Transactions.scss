@@ -97,11 +97,13 @@ input::placeholder {
 
     [data-name='total'] {
         width: 10%;
+        text-align: end;
     }
 
     input[data-name='total'] {
         background: transparent !important;
         pointer-events: none;
+        text-align: end;
     }
 }
 
@@ -148,6 +150,7 @@ input::placeholder {
 
     input[type=number] {
         -moz-appearance: textfield;
+        appearance: textfield;
     }
 
     label:first-child {

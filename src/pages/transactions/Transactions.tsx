@@ -10,7 +10,6 @@ interface TransactionItem {
     quantity: number,
     price: number,
     discount: number
-
 }
 
 export default function Transactions() {
@@ -25,6 +24,15 @@ export default function Transactions() {
     );
 
     const [transactionDiscount, setTransactionDiscount] = React.useState(0);
+    
+    const [data, setData] = React.useState(null);
+
+      React.useEffect(() => {
+        fetch('/api/hello') // This will be proxied to your Go backend
+          .then(response => response.json())
+          .then(data => setData(data.message));
+          console.log(data);
+      }, [data]);
 
     function itemList() {
 
@@ -33,7 +41,6 @@ export default function Transactions() {
 
                 {/* Booth Number */}
                 <input
-                    type='number'
                     placeholder='Booth'
                     data-name="booth"
                     value={item.booth}
@@ -93,7 +100,6 @@ export default function Transactions() {
     function processItemTotal(item: TransactionItem) {
 
         return ((item.price - (item.price * (item.discount ? item.discount : 0) / 100)) * item.quantity).toFixed(2)
-
     }
 
     function updateItemBooth(itemIndex: number, event: ChangeEvent): void {
@@ -234,7 +240,7 @@ export default function Transactions() {
         setTimeout(() => {
             // ((element.lastElementChild as HTMLElement).firstElementChild as HTMLElement).focus();
 
-            (element.children[list.length].firstElementChild as HTMLElement).focus()
+            (element.children[list.length].firstElementChild as HTMLElement).focus();
         });
     }
 
@@ -260,7 +266,7 @@ export default function Transactions() {
                     </div>
 
                     <button onClick={() => { addItem() }} className='fts-button'>+ New</button>
-
+                    <label>{data}</label>
                 </div>
                 <div className='fts-side-panel-container'>
                     <div>
